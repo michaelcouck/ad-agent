@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: google-marketing-mcp
+  main:
+    banner-mode: off
+    web-application-type: none
+  ai:
+    mcp:
+      server:
+        name: google-marketing-mcp
+        version: 0.1.0
+        type: SYNC
+        stdio: true
+        annotation-scanner:
+          enabled: true
+
+logging:
+  file:
+    name: ${MARKETING_MCP_LOG_FILE:./logs/google-marketing-mcp.log}
+  level:
+    root: WARN
+    com.ikube.marketingmcp: INFO
+
+marketing:
+  guard:
+    write-mode: ${MARKETING_MCP_WRITE_MODE:false}
+    dry-run: ${MARKETING_MCP_DRY_RUN:true}
+    require-confirmation-token: ${MARKETING_MCP_REQUIRE_CONFIRMATION_TOKEN:true}
+    confirmation-token: ${MARKETING_MCP_CONFIRMATION_TOKEN:}
+    max-daily-budget-change-percent: ${MARKETING_MCP_MAX_DAILY_BUDGET_CHANGE_PERCENT:20}
+    change-log-path: ${MARKETING_MCP_CHANGE_LOG:./logs/marketing-mcp-changes.jsonl}
+  google-ads:
+    developer-token: ${GOOGLE_ADS_DEVELOPER_TOKEN:}
+    client-id: ${GOOGLE_ADS_CLIENT_ID:}
+    client-secret: ${GOOGLE_ADS_CLIENT_SECRET:}
+    refresh-token: ${GOOGLE_ADS_REFRESH_TOKEN:}
+    customer-id: ${GOOGLE_ADS_CUSTOMER_ID:}
+    login-customer-id: ${GOOGLE_ADS_LOGIN_CUSTOMER_ID:}
+  ga4:
+    property-id: ${GA4_PROPERTY_ID:}
